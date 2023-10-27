@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    h1{
+        font-size: 400%;
+        text-align: center;
+        font-style: inherit;
+    }
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    form{
+        background: white;
+        display: flex;
+        flex-direction: column;
+        padding: 2vw 4vw;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 10px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h2>PERSONAL</h2>
+            <input type="text" id="pangalan" placeholder="buong pangalan"><br><br>
+            <input type="text" id="grade at section" placeholder="grade at section"><br><br>
+            <input type="text" id="kapanganakan" placeholder="kapanganakan"><br><br>
+            <input type="text" id="edad" placeholder="edad"><br><br>
+            <input type="text" id="kasarian" placeholder="kasarian"><br><br>
+            <input type="text" id="tirahan" placeholder="tirahan"><br><br>
+            <p>Maglagay ng katanungan tungkol sa paaralan. Makikita ang sagot sa <a href="https://www.facebook.com/profile.php?id=61551592690719&mibextid=ZbWKwL">11 TVL ICT Facebook Page</a>.</p>
+            <textarea name="questioning" id="questioning" cols="30" placeholder="Magtanong at sasagutin natin"></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "lamangenkim@gmail.com",
+                Password: "lamangenkim0209123",
+                To: 'lamangenkim@gmail.com',
+                From: document.getElementById("email").value,
+                Subject: "New form student",
+                Body: "pangalan: " + document.getElementById("buong panagalan").value
+                + "<br> grade and section: " + document.getElementById("grade and section").value
+                + "<br> kapanganakan: " + document.getElementById("kapanganakan").value
+                + "<br> edad: " + document.getElementById("edad").value
+                + "<br> kasarian: " + document.getElementById("kasarian").value
+                + "<br> tirahan: " + document.getElementById("tirahan").value
+                + "<br> questioning: " + document.getElementById("questioning").value
+            }).then(
+                message => alert(Form Send Succesfully)
+            );
+        }
+    </script>
+</body>
+</html>
